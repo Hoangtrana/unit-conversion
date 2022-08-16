@@ -6,47 +6,30 @@
 
 const inputEl = document.getElementById("input-el");
 const btnEl = document.getElementById("btn-el");
+const convMF = document.getElementById("conv-mf");
+const convLG = document.getElementById("conv-lg");
+const convKP = document.getElementById("conv-kp");
 
-const numberEl = document.getElementById("number-el");
-const numberEl2 = document.getElementById("number-el-2");
-const metToFeEl = document.getElementById("metToFe-el");
-const feToMeEl = document.getElementById("feToMe-el");
-
-const liToGaEl = document.getElementById("litoGa-el");
-
-const numberMassEl = document.getElementById("number-mass-el");
-const kiToPoEl = document.getElementById("kiToPo-el");
-const numberMassEl2 = document.getElementById("number-mass-el2");
-
-const numberVolumnEl = document.getElementById("number-volumn-el");
-const poToKiEl = document.getElementById("poToKi-el");
-const gaToLiEl = document.getElementById("gaToli-el");
-const numberVolumnEl2 = document.getElementById("number-volumn-el2");
 btnEl.addEventListener("click", function () {
+  const inputValue = inputEl.value;
   console.log(inputEl.value);
+  // Meters to feet
+  const lengthEl = `${inputValue} meters = ${metersToFeet(
+    inputValue
+  )} feet | ${inputValue} feet = ${feetTometers(inputValue)} meters`;
+  convMF.textContent = lengthEl;
 
-  const convertNumber1 = metersToFeet(inputEl.value);
-  const convertNumber2 = feetTometers(inputEl.value);
-  const convertNumber3 = litersToGallons(inputEl.value);
-  liToGaEl.textContent = convertNumber3;
-  const convertNumber4 = gallonsToliters(inputEl.value);
-  gaToLiEl.textContent = convertNumber4;
-  const convertNumber5 = kilosToPounds(inputEl.value);
-  const convertNumber6 = poundToKilos(inputEl.value);
+  //Liters to Gallons
+  const volumEl = `${inputValue} liters = ${litersToGallons(
+    inputValue
+  )} gallons | ${inputValue} gallons = ${gallonsToliters(inputValue)} liters`;
+  convLG.textContent = volumEl;
 
-  numberVolumnEl.textContent = inputEl.value;
-  numberVolumnEl2.textContent = inputEl.value;
-  console.log(convertNumber3);
-
-  numberEl.textContent = inputEl.value;
-  metToFeEl.textContent = convertNumber1;
-  numberEl2.textContent = inputEl.value;
-  feToMeEl.textContent = convertNumber2;
-
-  numberMassEl.textContent = inputEl.value;
-  kiToPoEl.textContent = convertNumber5;
-  numberMassEl2.textContent = inputEl.value;
-  poToKiEl.textContent = convertNumber6;
+  //Kilos to Pounds
+  const massEl = `${inputValue} kilos = ${kilosToPounds(
+    inputValue
+  )} pounds | ${inputValue} pounds = ${poundToKilos(inputValue)} kilos`;
+  convKP.textContent = massEl;
 });
 
 function metersToFeet(number) {
